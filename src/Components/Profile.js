@@ -1,12 +1,9 @@
-import { Flex, Image, useColorMode } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-
-import { Box, Text } from '@chakra-ui/react';
 
 export default function Profile({ charDets }) {
   const endpoint = process.env.REACT_APP_API_CHARACTER_PROFILE;
   const token = process.env.REACT_APP_ACCESS_TOKEN;
-  const { colorMode } = useColorMode();
 
   const { charName, realmName } = charDets;
   const [character, setCharacter] = useState({});
@@ -35,7 +32,6 @@ export default function Profile({ charDets }) {
       textAlign="center"
       alignItems="left"
       flexDirection="column"
-      bg={colorMode ? 'blue.400' : 'gray.100'}
     >
       <Text>{character.id}</Text>
     </Flex>

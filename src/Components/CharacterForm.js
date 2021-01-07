@@ -6,7 +6,6 @@ import {
   Box,
   Button,
   Text,
-  useColorMode,
 } from '@chakra-ui/react';
 import { QuestionOutlineIcon } from '@chakra-ui/icons';
 
@@ -14,7 +13,6 @@ export default function CharacterForm({ charObject, ...props }) {
   const [charName, setCharName] = useState('');
   const [realmName, setRealmName] = useState('');
   const [showForm, setShowForm] = useState(true);
-  const { colorMode } = useColorMode();
 
   const submitHandler = event => {
     event.preventDefault();
@@ -46,24 +44,21 @@ export default function CharacterForm({ charObject, ...props }) {
       <Box>
         <Text p="10px" fontSize="3xl">
           <QuestionOutlineIcon mr="10px" w="10" h="10" color="orange.500" />
-          Search for any WoW character
+          Look up any WoW character
         </Text>
       </Box>
       <FormControl
         isRequired
         id="characterForm"
-        border="2px"
-        borderColor="gray.200"
         borderRadius="10px"
         padding="5px"
-        bg={colorMode === 'light' ? 'white' : 'dark'}
       >
         <FormLabel>Character Name</FormLabel>
         <Input
           id="charName"
           isRequired
           value={charName}
-          bg="rgba(254, 235, 200, 0.15)"
+          bg="rgba(216, 237, 255, 0.4)"
           onChange={e => setCharName(e.currentTarget.value)}
         />
         <FormLabel>Realm Name</FormLabel>
@@ -71,7 +66,7 @@ export default function CharacterForm({ charObject, ...props }) {
           id="realmName"
           isRequired
           value={realmName}
-          bg="rgba(254, 235, 200, 0.15)"
+          bg="rgba(216, 237, 255, 0.4)"
           onChange={e => setRealmName(e.currentTarget.value)}
         />
       </FormControl>
