@@ -1,16 +1,13 @@
 import React from 'react';
 import { IconButton } from '@chakra-ui/react';
-import { MdPhotoCamera } from 'react-icons/md';
+import { MdPhotoCamera as CameraIcon } from 'react-icons/md';
 
 export default function BackgroundSwitch({
-  images,
+  index,
   setBackgroundImage,
   ...props
 }) {
-  const pickImage = () => {
-    const index = Math.floor(Math.random() * images.length);
-    setBackgroundImage(images[index]);
-  };
+  const nextImage = index => setBackgroundImage(index + 1);
 
   return (
     <IconButton
@@ -18,8 +15,8 @@ export default function BackgroundSwitch({
       m="15px"
       fontSize="lg"
       variant="ghost"
-      onClick={() => pickImage()}
-      icon={<MdPhotoCamera />}
+      onClick={() => nextImage(index)}
+      icon={<CameraIcon />}
       {...props}
     />
   );

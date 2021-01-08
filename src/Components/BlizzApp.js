@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Flex } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
+import { Flex, ScaleFade, useInterval } from '@chakra-ui/react';
 
 import CharacterForm from './CharacterForm';
 import Profile from './Profile';
@@ -16,8 +16,10 @@ export default function BlizzApp(props) {
     'https://images.blz-contentstack.com/v3/assets/blt3452e3b114fab0cd/blt0a70f219593379ea/5dbb292924642a3b8da56e09/Wallpaper_1920x1080_-_Cinematic_1.jpg',
   ];
 
-  const [backgroundImage, setBackgroundImage] = useState(images[0]);
+  const [backgroundImage, setBackgroundImage] = useState(0);
   const [characterDetails, setCharacterDetails] = useState({});
+
+  const isLoaded = () => Object.keys(characterDetails).length === 0;
 
   return (
     <Flex
@@ -27,15 +29,13 @@ export default function BlizzApp(props) {
       justifyContent="center"
       flexDirection="row"
       backgroundImage={
-        Object.keys(characterDetails).length === 0
-          ? `url(${backgroundImage})`
-          : null
+        isLoaded() ? `url(${images[backgroundImage % images.length]})` : null
       }
       backgroundSize="100% 100%"
     >
-      {Object.keys(characterDetails).length === 0 ? (
+      {isLoaded() ? (
         <BackgroundSwitch
-          images={images}
+          index={backgroundImage}
           setBackgroundImage={setBackgroundImage}
         />
       ) : null}
@@ -48,9 +48,9 @@ export default function BlizzApp(props) {
         overflowY="hidden"
       >
         <CharacterForm charObject={setCharacterDetails} />
-        {Object.keys(characterDetails).length !== 0 ? (
+        <ScaleFade in={!isLoaded()}>
           <Profile charDets={characterDetails} />
-        ) : null}
+        </ScaleFade>
       </Flex>
     </Flex>
   );

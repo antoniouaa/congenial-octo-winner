@@ -12,7 +12,6 @@ export default function Profile({ charDets }) {
     const target = new URL(`${realmName}/${charName}`, endpoint);
     target.searchParams.append('namespace', 'profile-eu');
     target.searchParams.append('locale', 'eu_US');
-    console.log(target);
     fetch(target, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -22,7 +21,11 @@ export default function Profile({ charDets }) {
       .then(json => setCharacter(json));
   };
 
-  useEffect(() => fetchProfile(charName, realmName), [charName, realmName]);
+  useEffect(() => {
+    if (charName && realmName) {
+      fetchProfile(charName, realmName);
+    }
+  }, [charName, realmName]);
 
   return (
     <Flex
