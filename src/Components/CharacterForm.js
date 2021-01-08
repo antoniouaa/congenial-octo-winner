@@ -9,6 +9,8 @@ import {
 } from '@chakra-ui/react';
 import { QuestionOutlineIcon } from '@chakra-ui/icons';
 
+import './Misc.css';
+
 export default function CharacterForm({ charObject, ...props }) {
   const [charName, setCharName] = useState('');
   const [realmName, setRealmName] = useState('');
@@ -33,11 +35,12 @@ export default function CharacterForm({ charObject, ...props }) {
 
   return (
     <Box
+      id="character-form-box"
       w="30%"
       m="auto"
       p="5px 5px 5px 5px"
       textAlign="left"
-      borderRadius="10px 10px 0 0"
+      borderRadius="10px"
       boxShadow="inset 0 0 2000px rgba(10, 10, 30, 1)"
       display={showForm ? {} : 'none'}
     >
@@ -49,7 +52,7 @@ export default function CharacterForm({ charObject, ...props }) {
       </Box>
       <FormControl
         isRequired
-        id="characterForm"
+        id="character-form"
         borderRadius="10px"
         padding="5px"
       >

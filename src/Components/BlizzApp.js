@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Flex, ScaleFade, useInterval } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Flex, ScaleFade } from '@chakra-ui/react';
 
 import CharacterForm from './CharacterForm';
 import Profile from './Profile';
@@ -42,6 +42,8 @@ export default function BlizzApp(props) {
       <Flex
         id="character-form"
         w="100%"
+        minH="660px"
+        minW="800px"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
