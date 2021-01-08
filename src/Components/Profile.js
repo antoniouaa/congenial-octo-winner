@@ -29,14 +29,15 @@ export default function Profile({ charDets }) {
 
   return (
     <Flex
-      w="50%"
-      mt="10%"
+      w="100%"
+      h="100%"
       borderRadius="10px"
       textAlign="center"
       alignItems="left"
       flexDirection="column"
     >
       <Text>{character.id}</Text>
+      <Text>{character.name}</Text>
     </Flex>
   );
 }
